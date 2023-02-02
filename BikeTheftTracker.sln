@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeTheftTracker.API", "BikeTheftTracker\BikeTheftTracker.API.csproj", "{544084A0-CACF-445C-89F4-FEAB9C60BA24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{7F9CC592-4511-4058-A1E4-CF9E1447E573}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8662EED3-C803-4324-8D33-209F89F9284E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{D843A7F7-1BFD-41E0-8B3D-D34075B03914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Core", "Infrastructure.Core\Infrastructure.Core.csproj", "{D72F2929-7BDB-4B14-8C84-B44C249B0F45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{544084A0-CACF-445C-89F4-FEAB9C60BA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544084A0-CACF-445C-89F4-FEAB9C60BA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544084A0-CACF-445C-89F4-FEAB9C60BA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544084A0-CACF-445C-89F4-FEAB9C60BA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D843A7F7-1BFD-41E0-8B3D-D34075B03914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D843A7F7-1BFD-41E0-8B3D-D34075B03914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D843A7F7-1BFD-41E0-8B3D-D34075B03914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D843A7F7-1BFD-41E0-8B3D-D34075B03914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72F2929-7BDB-4B14-8C84-B44C249B0F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72F2929-7BDB-4B14-8C84-B44C249B0F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72F2929-7BDB-4B14-8C84-B44C249B0F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72F2929-7BDB-4B14-8C84-B44C249B0F45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D843A7F7-1BFD-41E0-8B3D-D34075B03914} = {7F9CC592-4511-4058-A1E4-CF9E1447E573}
+		{D72F2929-7BDB-4B14-8C84-B44C249B0F45} = {8662EED3-C803-4324-8D33-209F89F9284E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83EF22BD-D618-4607-84E1-374BAFCD5EEE}
+	EndGlobalSection
+EndGlobal
