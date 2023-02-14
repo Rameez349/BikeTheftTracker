@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Dtos.Responses;
+﻿using Application.Dtos.Responses;
 
 namespace Application.Exceptions
 {
@@ -16,6 +10,9 @@ namespace Application.Exceptions
             {
                 case ArgumentNullException:
                     return new ErrorResponse(Convert.ToInt16(System.Net.HttpStatusCode.BadRequest), exception.Message);
+                case HttpRequestException:
+                    var requestException = exception as HttpRequestException;
+                    return new ErrorResponse(Convert.ToInt16(requestException?.StatusCode), requestException?.Message ?? String.Empty);
                 default:
                     return new ErrorResponse(Convert.ToInt16(System.Net.HttpStatusCode.InternalServerError), exception.Message);
             }
