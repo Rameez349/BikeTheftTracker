@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RichardSzalay.MockHttp;
+﻿using RichardSzalay.MockHttp;
 using Infrastructure.Core.Services;
 using Application.Constants;
 using Infrastructure.Core.Options;
@@ -12,6 +7,7 @@ using Application.Dtos.Responses;
 using System.Text.Json;
 using FluentAssertions;
 using System.Net.Mime;
+using Infrastructure.Tests.DataMocks;
 
 namespace Infrastructure.Tests
 {
@@ -30,7 +26,7 @@ namespace Infrastructure.Tests
             // Arrange
             var expectedResult = new Bikes
             {
-                BikesCollection = GetBikeDetailsMock()
+                BikesCollection = BikeMocks.GetBikeDetailsMock()
             };
             var options = new BikeIndexApiOptions
             {
@@ -59,7 +55,7 @@ namespace Infrastructure.Tests
             // Arrange
             var expectedResult = new Bikes
             {
-                BikesCollection = GetBikeDetailsMock().Where(x => x.ManufacturerName == "Panther")
+                BikesCollection = BikeMocks.GetBikeDetailsMock().Where(x => x.ManufacturerName == "Panther")
             };
             var options = new BikeIndexApiOptions
             {
@@ -67,7 +63,7 @@ namespace Infrastructure.Tests
             };
             var bikeIndexApiOptions = Options.Create(options);
 
-            MockHttp.When("https://localhost/api/search")
+            MockHttp.When($"https://localhost/api/{BikeIndexApiPaths.SearchBikes}")
                     .WithQueryString("page=1&per_page=25&manufacturer=Panther")
                     .Respond(MediaTypeNames.Application.Json, JsonSerializer.Serialize(expectedResult));
 
@@ -82,29 +78,32 @@ namespace Infrastructure.Tests
             result.Should().BeEquivalentTo(expectedResult);
         }
 
-        private IEnumerable<BikeDetails> GetBikeDetailsMock()
-       => new List<BikeDetails>()
-       {
-            new BikeDetails
+        [Fact]
+        public async Task Test_SearchBikes_With_InvalidBikeIndexApi_Url_Throws_Exception()
+        {
+            // Arrange
+            var expectedResult = new Bikes
             {
-                Id = 1,
-                DateStolen=null,
-                Description="stolen bike is in excellent condition",
-                FrameColors = new string[] { "grey","blue"},
-                FrameModel="2006",
-                IsStockImage=false,
-                ManufacturerName="Panther"
-            },
-            new BikeDetails
+                BikesCollection = BikeMocks.GetBikeDetailsMock().Where(x => x.ManufacturerName == "Panther")
+            };
+            var options = new BikeIndexApiOptions
             {
-                 Id = 2,
-                DateStolen=null,
-                Description="stolen bike is in average condition",
-                FrameColors = new string[] { "pink","red"},
-                FrameModel="2016",
-                IsStockImage=false,
-                ManufacturerName="KONA Bikes"
-            }
-       };
+                BaseAddress = "https://localhost/api/"
+            };
+            var bikeIndexApiOptions = Options.Create(options);
+
+            MockHttp.When($"https://localhost/api/")
+                    .WithQueryString("page=1&per_page=25&manufacturer=Panther")
+                    .Respond(MediaTypeNames.Application.Json, JsonSerializer.Serialize(expectedResult));
+
+            var client = MockHttp.ToHttpClient();
+            var bikeIndexApiClient = new BikeIndexApiClient(client, bikeIndexApiOptions);
+
+            // Action
+            Func<Task> result = async () => await bikeIndexApiClient.SearchBikes(BikeIndexApiPaths.SearchBikes, "page=1&per_page=25&manufacturer=Panther");
+
+            // Assert
+            await result.Should().ThrowAsync<HttpRequestException>();
+        }
     }
 }
