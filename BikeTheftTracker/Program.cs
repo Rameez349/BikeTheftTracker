@@ -2,10 +2,7 @@ using System.Text.Json.Serialization;
 using Application.Interfaces;
 using Application.Services;
 using BikeTheftTracker.API.Extensions;
-using Infrastructure.Core.HttpClients;
 using Infrastructure.Core.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
 
 namespace BikeTheftTracker
 {

@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
 using Application.Dtos.Requests;
 using Application.Dtos.Responses;
+using Application.Interfaces;
 using Application.Services;
 using FluentAssertions;
-using Infrastructure.Core.HttpClients;
 using Infrastructure.Tests.DataMocks;
 using Moq;
 

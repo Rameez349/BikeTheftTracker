@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Core.HttpClients
+﻿namespace Application.Interfaces
 {
     public interface IBikeIndexApiClient
     {

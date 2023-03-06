@@ -4,7 +4,6 @@ using Application.Dtos.Requests;
 using Application.Dtos.Responses;
 using Application.Extensions;
 using Application.Interfaces;
-using Infrastructure.Core.HttpClients;
 
 namespace Application.Services
 {
