@@ -1,4 +1,4 @@
-﻿using Infrastructure.Core.HttpClients;
+﻿using Application.Interfaces;
 using Infrastructure.Core.Options;
 using Infrastructure.Core.Services;
 

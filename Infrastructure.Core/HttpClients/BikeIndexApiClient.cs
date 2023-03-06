@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Infrastructure.Core.HttpClients;
+﻿using Application.Interfaces;
 using Infrastructure.Core.Options;
 using Microsoft.Extensions.Options;
 
